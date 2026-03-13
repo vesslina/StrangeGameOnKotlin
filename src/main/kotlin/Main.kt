@@ -6,7 +6,7 @@ var gameHour: String = "- 07:20 AM -"
 var gameDay: String = "Понедельник"
 
 
-var boshki = false  // false, димон не курил бошки и завтракал тухлыми яйцами либо вообще не завтракал
+var smokeGrass = false  // false, димон не курил бошки и завтракал тухлыми яйцами либо вообще не завтракал
 var sral = false  //срал димон в уровне "Утро" или нет
 var eating = false //Ел ли димон тухлые яйца
 var dimonProebalTralik: Boolean = false  // true - если димон проебал тралик и ехал на чем-то другом в колледж
