@@ -1,5 +1,4 @@
-import kotlin.concurrent.timer
-import kotlin.random.Random
+
 
 var gameNumber: String = "День 1 "
 var gameHour: String = "- 07:20 AM -"
