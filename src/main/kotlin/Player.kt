@@ -19,6 +19,7 @@ abstract class Player(val firstName: String, val secondName: String, val funName
     //Игровые функции
     var playerMood: Int = 100  //Начальное настроение, min 0 and max 100
     var playerHealth: Int = 100 //Пока не используются
+    var score: Int = 0
 
     fun checkInventory(): String {
         return if (inventory.isEmpty()) {
@@ -27,7 +28,7 @@ abstract class Player(val firstName: String, val secondName: String, val funName
             "в карманах  ${dropRandomName()} нашел: ${inventory.joinToString()}"
         }
     }
-    //Пример вызова: println(Old.dimka.checkInventory())
+    //Пример вызова: println(dimka.checkInventory())
 
 
     //Изменение жизней
@@ -52,6 +53,13 @@ abstract class Player(val firstName: String, val secondName: String, val funName
     fun fullShowStatus() {
         println("""
             Вывод полной игровой статистики:
+            
+            $playerHealth/100
+            $playerHealth/100
+            
+            Предметы в карманах: ${checkInventory()}
+            
+            Суммарное количество очков: $score
             
             Уровень 1: Утро.
             Ходил срать утром: ${if (sral) "Да" else "Нет"}
