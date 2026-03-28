@@ -329,7 +329,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             game.gameOver(false, "Пиздец ошибка была звонить пашку")
             return false
         } else {
-            println()
+
             println("Не веря своим глазам и в свою удачу, димон в ахуе смотрит на заветное число $dmitryRandom которое ебет число пашка $pavelRandom")
             game.time(5000)
             println("Послав нахуй димона и всю его родословную пашок начал собираться чтобы отвезти маленького до шараги")
@@ -378,7 +378,10 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
 
 
             } else {
-                println("Они едут пиздят, слушают мейби бейби шипучка, димон вспоминает их лучшие детские годы ")
+                println("Они едут пиздят, слушают мейби бейби шипучка, димон вспоминает их худшие счастливые детские годы ")
+                game.time(4000)
+                println("Сейчас все поменялось, ныне $ находится под огромным каблуком ")
+
             }
         }
         return false
