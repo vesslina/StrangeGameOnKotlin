@@ -87,7 +87,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             game.time(4000)
             println("Димону это пиздец не понравилось")
             game.time(3000)
-            game.gameOver("", "ЧТО СТОИТ СДЕЛАТЬ?  сломать колени/дать леща")
+            game.gameOver(message = "ЧТО СТОИТ СДЕЛАТЬ?  сломать колени/дать леща")
             val choiceInTrolleybus = game.readChoice(listOf("дать леща", "поцеловать"))
 
             when (choiceInTrolleybus) {
@@ -118,8 +118,8 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             game.time(4000)
             println("Димон стоит и думает как бы ему добраться до любимого колледжа, есть пара вариантов:")
             game.time(2000)
-            game.gameOver("", "ВЫБЕРИ СКОРЕЕ ЧТО ЕМУ СДЕЛАТЬ")
-            game.gameOver("", "вызвать такси/биться головой об остановку/позвонить пашку/дождаться следующий тралик")
+            game.gameOver(message = "ВЫБЕРИ СКОРЕЕ ЧТО ЕМУ СДЕЛАТЬ")
+            game.gameOver(message = "вызвать такси/биться головой об остановку/позвонить пашку/дождаться следующий тралик")
             choosingTransport = game.readChoice(
                 listOf(
                     "вызвать такси",
@@ -144,10 +144,10 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
     private fun introSecond() {
         game.gameHour = "- 07:49 AM -"
 
-        game.gameOver("==","==")
-        game.gameOver("Go", "Go")
-        game.gameOver("","ВВЕДИТЕ YES ДЛЯ ПРОДОЛЖЕНИЯ ИГРЫ")
-        game.gameOver("==","==")
+        game.gameOver(win = false, message = false)
+        game.gameOver(win = true, message = true)
+        game.gameOver(message = "ВВЕДИТЕ YES ДЛЯ ПРОДОЛЖЕНИЯ ИГРЫ")
+        game.gameOver(win = false, message = false)
         println()
         game.consentVerification()
         println()
@@ -194,7 +194,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             println()
             dmitry.stonedTaxi = true
             game.time(4000)
-            game.gameOver("true", "Ахуенно на такси покатался бро скепасти не жрем походу")
+            game.gameOver(true, "Ахуенно на такси покатался бро скепасти не жрем походу")
             return true
         } else {
             println("")
@@ -211,7 +211,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             val luck = (1..9).random()
             if (luck == 4) {
                 println("Переходя дорогу димона сбивает тралик.... не повезло бро пиздец ")
-                game.gameOver("false", "Пиздец ошибка была не дождаться некст тралик")
+                game.gameOver(false, "Пиздец ошибка была не дождаться некст тралик")
                 return false
             }
             println(" Димон на ебанутом минус вайбе садится в тэху, в салоне пиздец как страшно воняет, будто в багажнике типа мертвого катают уже третий сезон ")
@@ -237,7 +237,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
                 println()
                 dmitry.tookTaxi = true
 
-                game.gameOver("true", "")
+                game.gameOver(true, "")
                 return true
             }
             println("Димону ебануто хочется блевать, но нечем, нормально пожрать утром этот идиот не додумался ")
@@ -245,7 +245,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             dmitry.tookTaxi = true
 
             println()
-            game.gameOver("true", "Ура! ты молодец")
+            game.gameOver(true, "Ура! ты молодец")
             return true
         }
 
@@ -267,12 +267,12 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             println("Газель на полной скорости влетает в остановку превращая всех в ебаный фарш мираторг")
             game.time(3000)
             println("За рулем был никистос ")
-            game.gameOver("false", "Пиздец ошибка была не дождаться некст тралик")
+            game.gameOver(false, "Пиздец ошибка была не дождаться некст тралик")
             return false
 
         } else {
             println("у димона окончательно свистит фляга, мы окончательно его потеряли,")
-            game.gameOver("false", "Пиздец ошибка была не дождаться некст тралик")
+            game.gameOver(false, "Пиздец ошибка была не дождаться некст тралик")
             return false
 
         }
@@ -316,7 +316,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             println("Все забей, димон от увиденного просто взял из воздуха ган и застрелился ")
             println()
             //Конец игры
-            game.gameOver("false", "Пиздец ошибка была не дождаться некст тралик")
+            game.gameOver(false, "Пиздец ошибка была не дождаться некст тралик")
             return false
         } else if (pavelRandom > dmitryRandom) {
             println("Смотря на эту хуйню начинает орать как в грустных фильмах")
@@ -326,7 +326,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
             println("димон просто застыл и стоял так весь день в итоге умер от озноба")
             println()
             //Конец уровня
-            game.gameOver("false", "Пиздец ошибка была звонить пашку")
+            game.gameOver(false, "Пиздец ошибка была звонить пашку")
             return false
         } else {
             println()
@@ -352,7 +352,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
                     println()
                     println("Пашок не успевает оттереть лобаш, вас выкидывает на встречку и сбивает ебаный камаз трансформер Десептикон оптимус прайм ")
                     //Конец уровня
-                    game.gameOver("false", "Пиздец ошибка была жрать эту хуйню....")
+                    game.gameOver(false, "Пиздец ошибка была жрать эту хуйню....")
                     return false
                 } else {
                     println("Но пашок мастерски вылизывает лобаш досуха, и им удается не вылететь на встречку под фуру десиптикона ")
@@ -371,7 +371,7 @@ class LevelTwo(private val game: Game, private val dmitry: Dmitry): Level{
                     println(" Осматривается по сторонам и видит любимую общагу")
                     println("\"Я дома\"- думает димон ")
                     //Конец уровня
-                    game.gameOver("true", "")
+                    game.gameOver(true, "")
                     return true
 
                 }

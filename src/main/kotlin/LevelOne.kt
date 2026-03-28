@@ -10,8 +10,8 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
     game.currentLevel = 1
 
     println()
-    game.gameOver("==", "==")
-    game.gameOver("Go", "Go")
+    game.gameOver(win = false, message = false)
+    game.gameOver(true, message = true)
     println()
     println("После мучительного сна Димон просыпаться от резкой и невыносимой вони ")
     game.time(4000)
@@ -21,7 +21,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
     println("Настало время его первого сложного выбора за этот день:")
     println("Что стоит сделать димону в первую очередь ? ")
     game.time(4000)
-    game.gameOver("", "ВВЕДИТЕ ЖЕЛАЕМОЕ ДЕЙСТВИЕ - посрать/почистить зубы/поесть/лечь обратно спать")
+    game.gameOver( message = "ВВЕДИТЕ ЖЕЛАЕМОЕ ДЕЙСТВИЕ - посрать/почистить зубы/поесть/лечь обратно спать")
     println()
 
     val choiceMorning = game.readChoice(listOf("посрать","почистить зубы","поесть","лечь обратно спать"))
@@ -37,14 +37,14 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
 
     //Вступительный текст игры
     private fun intro(){
-        game.gameOver("==", "==")
-        game.gameOver("","Добро пожаловать в игру: Демонов Дмитрий")
-        game.gameOver("","Цель игры: Прожить типичный день Димки..")
-        game.gameOver("","Вам нужно принимать трудные решения которые могут привести как к хорошей или плохой концовке!")
-        game.gameOver("","Половина действий выбирается случайным образом, а другая умными или не очень решениями игрока")
+        game.gameOver(win = false, message = false)
+        game.gameOver(message = "Добро пожаловать в игру: Демонов Дмитрий")
+        game.gameOver(message ="Цель игры: Прожить типичный день Димки..")
+        game.gameOver(message ="Вам нужно принимать трудные решения которые могут привести как к хорошей или плохой концовке!")
+        game.gameOver(message ="Половина действий выбирается случайным образом, а другая умными или не очень решениями игрока")
         println()
-        game.gameOver("", "ВВЕДИТЕ YES ДЛЯ НАЧАЛА ИГРЫ")
-        game.gameOver("==", "==")
+        game.gameOver(message = "ВВЕДИТЕ YES ДЛЯ НАЧАЛА ИГРЫ")
+        game.gameOver(false, false)
         println()
 
         game.consentVerification()
@@ -58,7 +58,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
             println("Он берет ложку и зажигалку, завязывает шнурки на своих найк аир монарх и берет сумку \"Север\"")
             dmitry.sral = true
             //Конец уровня - победа
-            game.gameOver("true", "cтартер пак димона собран")
+            game.gameOver(true, "cтартер пак димона собран")
             return true
         } else {
             println("Бляяяя, жуткая диарея наступила не вовремя, говном начинает наполняться комната,")
@@ -68,7 +68,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
             println("и спасти димона от смерти захлебнувшись своим говном!! ")
             println()
             game.gameOver(
-                "",
+                message =
                 "ВЫБЕРИ СКОРЕЕ ЧТО ЕМУ СДЕЛАТЬ!! начать звать володю/биться головой об дверь/подергать ручку/смириться со смертью"
             )
             print("--->")
@@ -89,7 +89,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         game.time(3000)
                         println("К сожалению его никто не услышал, грустная смерть  ")
                         //Конец уровня - проигрыш
-                        game.gameOver("false", "Захлебнулся говном")
+                        game.gameOver(false ,"Захлебнулся говном")
                         return false
                     } else {
                         println()
@@ -98,7 +98,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         println("Тебе повезло, ты смог успешно завершить свое чудесное утро живым и почти здоровым!")
                         dmitry.sral = true
                         //Конец уровня - победа
-                        game.gameOver("true", "Что бы ты делал без володьки")
+                        game.gameOver(true, "Что бы ты делал без володьки")
                         return true
                     }
                 }
@@ -110,7 +110,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         println("Володя в этот момент смотрел хуйню которую ему скинул димон в рилсах и сидел в наушниках,")
                         println("Сколько бы димон не бился головкой, дверь оказалась прочной, он не смог выбраться из унитаза")
                         //Конец уровня - проигрыш
-                        game.gameOver("false", "Захлебнулся говном")
+                        game.gameOver(false, "Захлебнулся говном")
                         return false
                     } else {
                         println()
@@ -121,7 +121,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         dmitry.sral = true
                         println("Тебе повезло, ты смог успешно завершить свое чудесное утро живым и почти здоровым!")
                         //Конец уровня - победа
-                        game.gameOver("true", "к сожалению ")
+                        game.gameOver(true, "к сожалению ")
                         return true
                     }
                 }
@@ -136,7 +136,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         println("Тебе повезло, ты смог успешно завершить свое чудесное утро живым и почти здоровым!")
                         dmitry.sral = true
                         //Конец уровня - победа
-                        game.gameOver("true", "")
+                        game.gameOver(true, "")
 
                         return true
 
@@ -146,7 +146,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         println("Дверь была не замкнута, но в тот момент когда он тянулся к ручке вся химия которую он сожрал за столько лет ")
                         println("решился сказаться на его здоровье, в глазах потемнело, тело обмякло, силы стремительно его покинули грустная смерть")
                         //Конец уровня - проигрыш
-                        game.gameOver("false", "Захлебнулся говном")
+                        game.gameOver(false, "Захлебнулся говном")
                         return false
 
                     }
@@ -158,7 +158,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         println()
                         println("       Ты поступил правильно, жизнь после такого позора была бы хуже смерти")
                         //Конец уровня - проигрыш
-                        game.gameOver("false", "Захлебнулся говном")
+                        game.gameOver(false, "Захлебнулся говном")
                         return false
 
 
@@ -170,7 +170,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         println("Тебе повезло, ты смог успешно завершить свое чудесное утро живым и почти здоровым!")
                         dmitry.sral = true
                         //Конец уровня - победа
-                        game.gameOver("true", "")
+                        game.gameOver(true, "")
                         return true
 
                     }
@@ -186,14 +186,14 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
         if (luck == 1 || luck == 2) {
             println()
             println("Все заебись, димон с кайфом чистит свои золотые зубы и с улыбкой смотрит в зеркало! ")
-            game.gameOver("true", "")
+            game.gameOver(true, "")
             return true
         } else {
             println()
             println("Бляяяя, димон вспоминает свою бывшую, его тело начинает сводить от ломки, он случайно заглатывает зубную щетку и начинает задыхаться!!!!")
-            game.gameOver("", "СРОЧНО ВЫБЕРИ ЧТО СДЕЛАТЬ ДИМОНУ ЧТОБЫ ОН НЕ ЗАДОХНУЛСЯ")
-            game.gameOver("","начать истошно орать/постучать себя по спиняке")
-            game.gameOver("==","==")
+            game.gameOver(message = "СРОЧНО ВЫБЕРИ ЧТО СДЕЛАТЬ ДИМОНУ ЧТОБЫ ОН НЕ ЗАДОХНУЛСЯ")
+            game.gameOver(message = "начать истошно орать/постучать себя по спиняке")
+            game.gameOver(win = false, message = false)
             println()
             print("--->")
             val choiceZYBKI = game.readChoice(listOf("начать истошно орать", "постучать себя по спиняке"))
@@ -206,7 +206,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         game.time(4000)
                         println("Володя в соседней комнате сидит и смотрит шлюх из рилсов которые ты ему скинул, ")
                         //Конец уровня - проигрыш
-                        game.gameOver("false", "Не вспоминай бывшую")
+                        game.gameOver(false, "Не вспоминай бывшую")
                         return false }
                     else{
                         println()
@@ -214,7 +214,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         game.time(3000)
                         println("Отлично !!!! ты успешно почистил свои зубы цвета солнца, ты готов начать новый день !!!")
                         //Конец уровня - победа
-                        game.gameOver("true", "К сожалению")
+                        game.gameOver(true, "К сожалению")
                         return true }
                 }
                 "постучать себя по спиняке" -> {val luck = (1..5).random()
@@ -224,7 +224,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         game.time(4000)
                         println("Отлично !!!! ты успешно почистил свои зубы цвета солнца, ты готов начать новый день !!!")
                         //Конец уровня - победа
-                        game.gameOver("true", "К сожалению")
+                        game.gameOver(true, "К сожалению")
                         return true
                     }
                     else{
@@ -233,7 +233,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                         game.time(4000)
                         println("Руки обмякли и в глазах потемнело, нехуй было колоться")
                         //Конец уровня - проигрыш
-                        game.gameOver("false", "Не вспоминай бывшую")
+                        game.gameOver(false, "Не вспоминай бывшую")
                         return false
                     }
                 }
@@ -247,9 +247,9 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
 
         println("Ты открываешь страшно воняющий холодильник, там особо есть нечего ")
         game.time(3000)
-        game.gameOver("","ВЫБЕРИ ЧТО ТЫ БУДЕШЬ ЕСТЬ НА ЗАВТРАК!")
+        game.gameOver(message ="ВЫБЕРИ ЧТО ТЫ БУДЕШЬ ЕСТЬ НА ЗАВТРАК!")
         game.time(3000)
-        game.gameOver("", "В холодильнике лежат - тухлые яйца/колпак бошек")
+        game.gameOver(message = "В холодильнике лежат - тухлые яйца/колпак бошек")
         print("--->")
         val choiceEAT = game.readChoice(listOf("тухлые яйца", "колпак бошек"))
         when (choiceEAT) {
@@ -267,7 +267,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                     println("Тебе повезло, сожрав это ты мало того что не умер, так еще и стал сытым, поздравляю !!!")
                     dmitry.eatingEgs = true
                     //Конец уровня - победа
-                    game.gameOver("true", "К сожалению?")
+                    game.gameOver(true, "К сожалению?")
                     return true
                 }
                 else {
@@ -276,7 +276,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                     game.time(3000)
                     println("Короче забей, день испорчен, теперь единственное твое занятие это убирать блевотню с пола")
                     //Конец уровня - проигрыш
-                    game.gameOver("false", "Выбрал не те яички XDDDDD")
+                    game.gameOver(false, "Выбрал не те яички XDDDDD")
                     return false
                 }
             }
@@ -297,7 +297,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                     dmitry.smokeGrass = true
 
                     //Конец уровня - победа
-                    game.gameOver("true", "Ураа как здорово")
+                    game.gameOver(true, "Ураа как здорово")
                     return true
                 }
                 else {
@@ -313,7 +313,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                     println("Димон падает без сознания, тут нахуй уже ничего ему не поможет, бледный пришел к нему")
 
                     //Конец уровня - проигрыш
-                    game.gameOver("false", "Хороший стаф бро ")
+                    game.gameOver(false, "Хороший стаф бро ")
                     return false
                 }
             }
@@ -330,7 +330,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
         println("Ты пытаешься заснуть но не тут то было, тебе набирает ирина куратор мамочка, сбросить звонок было бы большой ошибкой ")
         println()
         game.time(4000)
-        game.gameOver("","ВЫБЕРИ, сбросить/ответить")
+        game.gameOver(message ="ВЫБЕРИ, сбросить/ответить")
         println()
         print("--->")
         val choiceCALL = game.readChoice(listOf("сбросить", "ответить"))
@@ -349,7 +349,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                 println("были инициалы И/Д......... ")
 
                 //Конец уровня - проигрыш
-                game.gameOver("false", "ебать ты ошибся браток")
+                game.gameOver(false, "ебать ты ошибся браток")
                 return false
             }
             "ответить" -> {
@@ -361,7 +361,7 @@ class LevelOne(private val game: Game, private val dmitry: Dmitry): Level {
                 println("Димон собирает пожитки ложку и зажигалку, завязывает шнурки на своих найк аир монарх он готов встретить новый день!")
 
                 //Конец уровня - победа
-                game.gameOver("true", "Ураа как здорово")
+                game.gameOver(true, "Ураа как здорово")
                 return true
             }
         }

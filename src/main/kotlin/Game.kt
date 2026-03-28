@@ -66,10 +66,15 @@ class Game(private val player: Player) {
         while (true)
     }
 
+
+    fun gameOver(message: String,) {
+        println("                    --------< $message >--------")
+
+    }
     //функция закрывающая уровень в зависимости от результатов игрока
-    fun gameOver(win: String, message: String,) {
-        when (win){
-            "true" -> {
+    fun gameOver(win: Boolean, message: String,){
+        when (win) {
+            true -> {
                 time(3000)
                 println("======================================================================================================================")
                 println("                      --------< УРОВЕНЬ ПРОЙДЕН $message >-------- ")
@@ -77,7 +82,8 @@ class Game(private val player: Player) {
                 println()
                 time(3000)
             }
-            "false" -> {
+
+            false -> {
                 time(3000)
                 println("======================================================================================================================")
                 println("                       --------< GAME OVER $message >--------  ")
@@ -86,16 +92,21 @@ class Game(private val player: Player) {
                 time(3000)
 
             }
-            else if (win == "==" && message == "==")-> {
-                println("======================================================================================================================")
-            }
-            else if (win == "Go" && message == "Go")->{
-          println("                    --------< ${levelName} ${gameHour},${gameDay }>-------- ")
-            }
-            else -> {
-
-                println("                    --------< $message >--------")}
-
         }
     }
+
+    fun gameOver(win: Boolean, message: Boolean,){
+        when{
+            (win == false && message == false)-> {
+                println("======================================================================================================================")
+            }
+            (win && message)->{
+                println("                    --------< ${levelName} ${gameHour},${gameDay }>-------- ")
+            }
+
+
+        }
+
+    }
+
 }
