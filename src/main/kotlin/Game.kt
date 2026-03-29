@@ -20,9 +20,9 @@ class Game(private val player: Player) {
         isRunning = true
         currentLevel = 0
         clearConsole()
-
-            val levels = listOf(LevelOne(this, player as Dmitry),
-                LevelTwo(this, player as Dmitry)) //Мы создаем обьекты уровней прямо в листе
+        //LevelTwo(this, player as Dmitry)
+        //LevelOne(this, player as Dmitry)
+            val levels = listOf(LevelTwo(this, player as Dmitry),) //Мы создаем объекты уровней прямо в листе
         for (level in levels) {
             if (!level.play()) {
                 println("Конец игры")
@@ -106,6 +106,33 @@ class Game(private val player: Player) {
 
 
         }
+
+    }
+
+
+    fun luckNumberRandom(): Boolean{
+
+        val compNumbers = List(3) { (1..10).random() }
+
+        val prompts = listOf(
+            "Введи своё первое число от 1 до 10!",
+            "Эмм.. Окей, теперь введи второе число....",
+            "А теперь третье..."
+        )
+
+        val playerNumbers = prompts.map { prompt ->
+            println(prompt)
+            readlnOrNull()?.trim()?.toInt() ?: 0
+        }
+
+        val hasWon = playerNumbers.any { it in compNumbers }
+        println("\nТвои числа: $playerNumbers")
+        time(3000)
+        println("Иии... Момент истины, вены на лбу Димки щас лопнут нахуй....")
+        time(3000)
+        println("Числа компьютера: $compNumbers")
+
+        return hasWon
 
     }
 

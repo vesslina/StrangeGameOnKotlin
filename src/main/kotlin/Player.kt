@@ -13,13 +13,18 @@ abstract class Player(val firstName: String, val secondName: String, val funName
     var tookTaxi: Boolean = false                // ехал ли на такси вообще ex taxi
 
 
+    //Накопительный счетчик, после достижения определенной отметки игра что-то сделает, будет сделано позже через функцию
+    var chekSral = 0  //Предупреждение о том что игроку нужно посрать
+    var chekEating  = 0// нужно поесть
+
+
     //Инвентарь
     val inventory = mutableListOf<String>()
 
     //Игровые функции
     var playerMood: Int = 100  //Начальное настроение, min 0 and max 100
     var playerHealth: Int = 100 //Пока не используются
-    var score: Int = 0
+    var score: Int = 0  //Рандом переменная, за какие-то действия я буду давать игроку очки, они не влияют на ход игры
 
     fun checkInventory(): String {
         return if (inventory.isEmpty()) {
@@ -54,8 +59,8 @@ abstract class Player(val firstName: String, val secondName: String, val funName
         println("""
             Вывод полной игровой статистики:
             
-            $playerHealth/100
-            $playerHealth/100
+            $playerHealth/100 - Оставшееся здоровье игрока 
+            $playerMood/100 - Оставшееся настроение игрока 
             
             Предметы в карманах: ${checkInventory()}
             
